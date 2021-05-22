@@ -5,3 +5,14 @@
 *.scm~
 *.scm#*
 .#*.scm
+
+*.so
+
+# chicken-install generated
+pathlib.build.sh
+pathlib.import.scm
+pathlib.install.sh
+pathlib.link
+pathlib.static.o
+
+*.swp

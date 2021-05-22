@@ -1,0 +1,8 @@
+((synopsis "Path manipulation routines inspired from Python")
+ (author "Andrew Mulbrook")
+ (license "Unlicense")
+ (category io)
+ (build-dependencies srfi-1 simple-sha1)
+ (components
+  (extension pathlib)))
+
