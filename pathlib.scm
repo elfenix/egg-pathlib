@@ -35,8 +35,7 @@
 ;;; Path Manipulation Routines
 ;;;   Module defines a base 'path' that allows simple modification operations.
 ;;; ---------------------------------------------------------------------------
-  (define path.sym 'path)
-  (define (path* . components) `(,path.sym . ,components))
+  (define (path* . components) `(path . ,components))
   ; Represent an error in processing path information
   (define path-error* 'path-error)
   (define (path-error msg) (list path-error* msg)) 
@@ -90,7 +89,7 @@
 
   ; Type verification
   (define (path? p)
-    (and (pair? p) (eq? (car p) path.sym)))
+    (and (pair? p) (eq? (car p) 'path)))
 
   ; Construct path with appended component
   ;   base is checked to verify proper path
@@ -103,7 +102,7 @@
           ((path? component) (%path-join-raw base (%path.components component)))
           ((list? component) (%path-join-raw base component))
           ((path? base)
-            (cons path.sym (append (%path.components base) (list component))))
+            (cons 'path (append (%path.components base) (list component))))
           (#t (path-error "Attempted to append path to non-path"))))
 
   ; Construct new path with added components
